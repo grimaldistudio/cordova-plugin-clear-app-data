@@ -38,7 +38,8 @@ public class ClearData extends CordovaPlugin
             this.callbackContext = callbackContext;
 
             if( action.equals(ACTION_CACHE) ) {
-                clearCache();
+                //clearCache();
+		clearApplicationData();
             } else if( action.equals(ACTION_DATA) ) {
                 clearApplicationData();
             }else{
@@ -73,8 +74,10 @@ public class ClearData extends CordovaPlugin
 		String[] children = appDir.list();
 		for (String s : children) {
 		  if ( (!s.equals("lib")) & (!s.equals("databases")) ) {
-			Log.d(TAG, "Delete " + s);
-			deleteDir(new File(appDir, s));
+		  	if( s.equals("files") ) {
+				Log.d(TAG, "Delete " + s);
+				deleteDir(new File(appDir, s));
+			}
 		  }
 		}
       }
