@@ -73,12 +73,12 @@ public class ClearData extends CordovaPlugin
 	  if (appDir.exists()) {
 		String[] children = appDir.list();
 		for (String s : children) {
-		  if ( (!s.equals("lib")) & (!s.equals("databases")) ) {
+		  //if ( (!s.equals("lib")) & (!s.equals("databases")) ) {
 		  	if( s.equals("files") ) {
 				Log.d(TAG, "Delete " + s);
 				deleteDir(new File(appDir, s));
 			}
-		  }
+		 // }
 		}
       }
       sendPluginSuccess();
